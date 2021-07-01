@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "https://eggos.icexin.com/"
 languageCode = "en-us"
 title = "The book of eggos"
 theme = "book"
