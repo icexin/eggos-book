@@ -1,41 +1,13 @@
 ---
-title: Introduction
+title: 简介
 type: docs
 ---
 
-# Acerbo datus maxime
+# 关于这个项目
 
-{{< columns >}}
-## Astris ipse furtiva
+Go的runtime提供了一些基本的操作系统抽象，goroutine对应进程，channel对应进程间通信，另外Go有自己的虚拟内存管理，所以萌生了在裸机上运行Go程序的想法。
 
-Est in vagis et Pittheus tu arge accipiter regia iram vocatur nurus. Omnes ut
-olivae sensit **arma sorori** deducit, inesset **crudus**, ego vetuere aliis,
-modo arsit? Utinam rapta fiducia valuere litora _adicit cursu_, ad facies
+实际证明，Go有操作硬件资源的能力，得益于Go可控的内存布局，以及不需要虚拟机直接翻译硬件指令的能力，还有类C的语法。这些都让Go编写运行于裸机的程序有了可能。
 
-<--->
-
-## Suis quot vota
-
-Ea _furtique_ risere fratres edidit terrae magis. Colla tam mihi tenebat:
-miseram excita suadent es pecudes iam. Concilio _quam_ velatus posset ait quod
-nunc! Fragosis suae dextra geruntur functus vulgata.
-{{< /columns >}}
-
-
-## Tempora nisi nunc
-
-Lorem **markdownum** emicat gestu. Cannis sol pressit ducta. **Est** Idaei,
-tremens ausim se tutaeque, illi ulnis hausit, sed, lumina cutem. Quae avis
-sequens!
-
-    var panel = ram_design;
-    if (backup + system) {
-        file.readPoint = network_native;
-        sidebar_engine_device(cell_tftp_raster,
-                dual_login_paper.adf_vci.application_reader_design(
-                graphicsNvramCdma, lpi_footer_snmp, integer_model));
-    }
-
-## Locis suis novi cum suoque decidit eadem
-
-Idmoniae ripis, at aves, ali missa adest, ut _et autem_, et ab?
+然而也有一些挑战，Go在很多指令里面打桩来进行协程调度以及内存GC，在一些不能重入的地方，如中断处理和系统调用，都带来了一些麻烦。
+总的来说，使用Go来操作硬件是一种乐趣，一方面也让我深入了解了Go的runtime，另一方面也是提供了一种除了c语言之外在裸机上编写操作系统内核的尝试。
