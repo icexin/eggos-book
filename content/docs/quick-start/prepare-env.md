@@ -1,6 +1,6 @@
 ---
-title: "1.1 环境准备"
-weight: 1
+title: "1.3 搭建开发环境"
+weight: 3
 # bookFlatSection: false
 # bookToc: true
 # bookHidden: false
