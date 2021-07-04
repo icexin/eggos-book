@@ -14,9 +14,12 @@ $ js 之后我们就可以输入合法的Javascript语句来执行。
 按&amp;lt;Crtl+D&amp;gt;来退出Javascript解释器。
 文件系统 # eggos现在没有实现完整的文件系统，而是使用了 afero作为文件系统的抽象接口。
 我们通过mount命令挂载一个samba文件系统来体验eggos的文件系统功能。
-root@eggos# mount smb://icexin:eggos@172.28.90.3:445/sambashare /share root@eggos# cd /share root@eggos# ls -rw-rw-rw- 111 fib.</description></item><item><title>1.3 搭建开发环境</title><link>https://eggos.icexin.com/docs/quick-start/prepare-env/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://eggos.icexin.com/docs/quick-start/prepare-env/</guid><description>我们在前一节快速体验了eggos的基本功能，这一节我们搭建一下eggos的开发环境，为后面的深入分析eggos打下基础。
-环境准备 # 基本工具如下：
+root@eggos# mount smb://icexin:eggos@172.28.90.3:445/sambashare /share root@eggos# cd /share root@eggos# ls -rw-rw-rw- 111 fib.</description></item><item><title>1.3 搭建开发环境</title><link>https://eggos.icexin.com/docs/quick-start/prepare-env/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://eggos.icexin.com/docs/quick-start/prepare-env/</guid><description>我们在上一节快速体验了eggos的基本功能，这一节我们搭建一下eggos的开发环境，为后面的深入分析eggos打下基础。
+核心工具准备 # 基本工具如下：
 go1.13.x mage构建工具 gcc和gdb，需要能生成elf32格式的。 qemu虚拟机 各平台的安装步骤如下所述。
 Linux(ubuntu) # Go语言编译器 # $ curl -LO https://golang.google.cn/dl/go1.13.15.linux-amd64.tar.gz $ mkdir $HOME/local &amp;amp;&amp;amp; tar xf -C $HOME/local go1.13.15.linux-amd64.tar.gz # 将$HOME/local/go/bin加入PATH环境变量，这里以bash为例 $ echo &amp;#39;export PATH=$HOME/local/go/bin:$PATH&amp;#39; &amp;gt;&amp;gt; $HOME/.bashrc # 将$HOME/go/bin也加入环境变量，方便执行编译出来的go工具 $ echo &amp;#39;export PATH=$HOME/go/bin:$PATH&amp;#39; &amp;gt;&amp;gt; $HOME/.bashrc $ source $HOME/.bashrc # 设置GOPROXY环境变量，加速package下载 $ go env -w GO111MODULE=on $ go env -w GOPROXY=https://goproxy.cn 按照上面命令执行完毕之后，输入go version命令，如果能正常输入go版本号就证明安装成功了。
 mage构建工具 # mage是一个类似make的构建工具，但它的makefile是用go语言编写的，可以跨平台，eggos最初是用的makefile，后面切换到mage上了。安装mage也非常简单。
-$ go get github.</description></item></channel></rss>
+$ go get github.</description></item><item><title>1.4 hello eggos</title><link>https://eggos.icexin.com/docs/quick-start/hello-eggos/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://eggos.icexin.com/docs/quick-start/hello-eggos/</guid><description>这一节我们编写第一个eggos的应用程序。
+eggos是一个 unikernel，但不妨碍在里面加上功能子模块。
+打开编辑器，在app/cmd目录下新建hello.go，写入如下代码：
+package cmd import ( &amp;#34;fmt&amp;#34; &amp;#34;github.com/icexin/eggos/app&amp;#34; ) func helloMain(ctx *app.Context) error { fmt.Fprintln(ctx.Stdout, &amp;#34;hello eggos&amp;#34;) return nil }</description></item></channel></rss>
