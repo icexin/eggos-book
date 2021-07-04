@@ -7,6 +7,9 @@ theme = "book"
 disablePathToLower = true
 enableGitInfo = true
 
+# Google Analytics
+googleAnalytics= "G-4S27LHKGHE"
+
 # Needed for mermaid/katex shortcodes
 [markup]
 [markup.goldmark.renderer]
