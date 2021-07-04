@@ -99,3 +99,7 @@ enableGitInfo = true
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables a drop-down menu for translations only if a translation is present.
   BookTranslatedOnly = false
+
+ [params.utterances]       # https://utteranc.es/
+    owner = "icexin"              # Your GitHub ID
+    repo = "doc-comments"               # The repo to store comments
