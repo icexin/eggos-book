@@ -21,5 +21,8 @@ Linux(ubuntu) # Go语言编译器 # $ curl -LO https://golang.google.cn/dl/go1.1
 mage构建工具 # mage是一个类似make的构建工具，但它的makefile是用go语言编写的，可以跨平台，eggos最初是用的makefile，后面切换到mage上了。安装mage也非常简单。
 $ go get github.</description></item><item><title>1.4 hello eggos</title><link>https://eggos.icexin.com/docs/quick-start/hello-eggos/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://eggos.icexin.com/docs/quick-start/hello-eggos/</guid><description>这一节我们编写第一个eggos的应用程序。
 eggos是一个 unikernel，但不妨碍在里面加上功能子模块。
-打开编辑器，在app/cmd目录下新建hello.go，写入如下代码：
-package cmd import ( &amp;#34;fmt&amp;#34; &amp;#34;github.com/icexin/eggos/app&amp;#34; ) func helloMain(ctx *app.Context) error { fmt.Fprintln(ctx.Stdout, &amp;#34;hello eggos&amp;#34;) return nil }</description></item></channel></rss>
+一些简单的命令放在app/cmd目录下，稍微复杂一点的命令需要单独放一个目录。
+第一个子程序 # 打开编辑器，在app/cmd目录下新建hello.go，写入如下代码：
+package cmd import ( &amp;#34;fmt&amp;#34; &amp;#34;github.com/icexin/eggos/app&amp;#34; ) func helloMain(ctx *app.Context) error { fmt.Fprintln(ctx.Stdout, &amp;#34;hello eggos&amp;#34;) return nil } func init() { app.Register(&amp;#34;hello&amp;#34;, helloMain) } 运行 mage -v qemu，等待终端出来之后，键入 hello，如果能顺利输出如下内容，则证明我们的程序已经被顺利编译并运行。
+welcome to eggos root@eggos# hello hello eggos 代码解释 # 每个子程序都有一个入口，函数签名为func (ctx *app.Context) error，最终在init函数里面调用app.Register即可注册子程序， 之后就在命令行里面调用这个子程序了。
+app/cmd目录下还有很多其他子程序可以参考。</description></item></channel></rss>
