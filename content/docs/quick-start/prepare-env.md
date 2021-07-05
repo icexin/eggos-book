@@ -118,6 +118,19 @@ $ brew install qemu
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+         {
+            "name": "dlv-gdb",
+            "type": "go",
+            "request": "attach",
+            "mode": "local",
+            "cwd": "${workspaceFolder}",
+            "debugAdapter": "legacy",
+            "processId": 1234,
+            "backend": "gdbstub",
+            "dlvFlags": [
+                "${workspaceRoot}/kernel.elf",
+            ],
+        },
         {
             "type": "gdb",
             "request": "attach",
@@ -134,6 +147,16 @@ $ brew install qemu
         },
     ]
 }
+```
+
+具体怎么用debugger来调试eggos，在后面的章节会写，先按这样配置环境。
+
+另外，原生的`dlv`并不支持qemu的gdb stub，笔者修改了一个版本，如果想用dlv来调试eggos的话，可以按照下面步骤安装dlv
+
+``` sh
+$ git clone --branch gdb https://github.com/icexin/delve.git
+$ cd delve
+$ go install ./cmd/dlv
 ```
 
 # 编译运行eggos项目
