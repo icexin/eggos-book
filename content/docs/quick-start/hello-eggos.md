@@ -13,7 +13,7 @@ weight: 4
 
 eggos是一个[unikernel](https://en.wikipedia.org/wiki/Unikernel)，但不妨碍在里面加上功能子模块。
 
-一些简单的命令放在`app/cmd`目录下，稍微复杂一点的命令需要单独放一个目录。
+一些简单的命令放在`app/cmd`目录下，稍微复杂一点的命令需要单独放一个目录，同时在`app/kmain/apps.go`中导入新定义的package。
 
 # 第一个子程序
 
